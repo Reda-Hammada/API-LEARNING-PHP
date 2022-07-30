@@ -1,14 +1,28 @@
 <?php
 
 $curl_session = curl_init();
+$header = [
 
-curl_setopt($curl_session,CURLOPT_URL,"https://randomuser.me/api");
-curl_setopt($curl_session,CURLOPT_RETURNTRANSFER,true );
-curl_setopt($curl_session,CURLOPT_HEADER, false);
+    "Authorization: Client-ID ICu4ggjQ_1B3va1W7ESkMgNeUAnmd8A8SiqKrrsLZqQ
+    ",
+];
+curl_setopt_array(
+    $curl_session, [
+        CURLOPT_URL =>"https://api.unsplash.com/photos/random",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => $header,
+        
+    ]
+
+
+    );
 
 $result = curl_exec($curl_session);
 
 curl_close($curl_session);
+
+
+$status_code =  curl_getinfo($curl_session,  CURLINFO_HTTP_CODE);
 
 echo $result;
 
