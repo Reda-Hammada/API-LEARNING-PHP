@@ -38,5 +38,6 @@ curl_setopt_array($curl_session ,
 
 
 $response = curl_exec($curl_session);
+echo $response;
 
-
+  
